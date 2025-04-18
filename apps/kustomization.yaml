@@ -1,0 +1,4 @@
+resources:
+  - flask-app
+  - k8s-test-app
+  - shared
