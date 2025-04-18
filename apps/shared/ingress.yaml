@@ -1,7 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: flask-ingress
+  name: unified-ingress
+  namespace: default
   annotations:
     cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
 spec:
@@ -17,7 +18,18 @@ spec:
                 name: flask-service
                 port:
                   number: 80
+    - host: k8s.lachgarazzeddine.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: k8s-test-app
+                port:
+                  number: 80
   tls:
     - hosts:
         - app.lachgarazzeddine.me
-      secretName: flask-app-tls
+        - k8s.lachgarazzeddine.me
+      secretName: multi-app-tls
