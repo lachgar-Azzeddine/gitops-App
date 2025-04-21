@@ -2,11 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: unified-ingress
-  namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - app.lachgarazzeddine.me
+        - k8s.lachgarazzeddine.me
+      secretName: multi-app-tls
   rules:
     - host: app.lachgarazzeddine.me
       http:
@@ -28,8 +32,3 @@ spec:
                 name: k8s-test-app
                 port:
                   number: 80
-  tls:
-    - hosts:
-        - app.lachgarazzeddine.me
-        - k8s.lachgarazzeddine.me
-      secretName: multi-app-tls

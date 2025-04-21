@@ -1,4 +1,3 @@
 resources:
+  - cluster-issuer.yaml
   - ingress.yaml
-  - certificate.yaml
-  - selfsigned-issuer.yaml
