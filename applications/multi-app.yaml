@@ -4,7 +4,7 @@ metadata:
   name: multi-app
 spec:
   source:
-    repoURL: https://github.com/zizo1112/flask-gitops-demo
+    repoURL: https://github.com/lachgar-Azzeddine/gitops-App.git
     path: apps
     targetRevision: main
   destination:
